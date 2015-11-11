@@ -1,0 +1,11 @@
+D:\Work\BookStore\BookDB\bin\Debug\BookDB.pdb
+D:\Work\BookStore\BookDB\bin\Debug\EntityFramework.dll
+D:\Work\BookStore\BookDB\bin\Debug\EntityFramework.SqlServer.dll
+D:\Work\BookStore\BookDB\bin\Debug\EntityFramework.xml
+D:\Work\BookStore\BookDB\bin\Debug\EntityFramework.SqlServer.xml
+D:\Work\BookStore\BookDB\obj\Debug\BookDB.pdb
+D:\Work\BookStore\BookDB\bin\Debug\BookDB.dll.config
+D:\Work\BookStore\BookDB\bin\Debug\BookDB.dll
+D:\Work\BookStore\BookDB\obj\Debug\BookDB.Migrations.InitialCreate.resources
+D:\Work\BookStore\BookDB\obj\Debug\BookDB.csproj.GenerateResource.Cache
+D:\Work\BookStore\BookDB\obj\Debug\BookDB.dll
