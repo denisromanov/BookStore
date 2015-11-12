@@ -12,11 +12,12 @@ namespace WebUI.Controllers
 {
     public class HomeController : Controller
     {
-
+        private int Tets = 2;
         private IBookRepository<Book> db;
 
         public HomeController()
         {
+            Tets++;
             db = new BookRepository();
         }
 
