@@ -12,7 +12,7 @@ namespace WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private int test = 2;
+        private int test = 3;
         private IBookRepository<Book> db;
 
         public HomeController()
