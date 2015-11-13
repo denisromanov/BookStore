@@ -12,19 +12,8 @@ namespace WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private int test = 2;
-        private IBookRepository<Book> db;
-
-        public HomeController()
-        {
-            test++;
-            db = new BookRepository();
-
-        }
-
         public ActionResult Index()
         {
-            test ++;
             return View();
         }
 
