@@ -83,7 +83,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Note.txt" />
+    <Content Include="Help\HttpRoute.txt" />
+    <Content Include="Help\HttpRouteCollection.txt" />
+    <Content Include="Help\RouteData.txt" />
+    <Content Include="Help\Status code.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

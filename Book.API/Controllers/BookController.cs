@@ -54,13 +54,14 @@ namespace Book.API.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post([FromBody] BookModel bookModel )
         {
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]BookModel bookModel)
         {
+
         }
 
         // DELETE api/<controller>/5
