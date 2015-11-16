@@ -62,6 +62,11 @@ namespace BookDB
             return BookId != null ? BookId.ID : 0;
         }
 
+        public Book GetBook(int id)
+        {
+            return db.Books.FirstOrDefault(b => b.ID == id);
+        }
+
         //Save changes db
         public void Save()
         {

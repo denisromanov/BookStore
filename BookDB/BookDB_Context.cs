@@ -26,9 +26,5 @@ namespace BookDB
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-        //protected override void OnMappingCreation()
-        //{
-        
-        //} 
     }
 }

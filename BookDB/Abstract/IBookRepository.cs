@@ -14,6 +14,7 @@ namespace BookDB.Abstract
         Book Read(int id);
         void Update(Book book);
         void Delete(int id);
+        Book GetBook(int id);
         int GetId(string name);
         void Save();
     }
