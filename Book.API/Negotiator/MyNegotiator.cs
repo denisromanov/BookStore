@@ -11,6 +11,7 @@ namespace Book.API.Negotiator
 {
     public class MyNegotiator : DefaultContentNegotiator
     {
+        // Понадобится только для разработки с поддержкой мобильных устройств
         public override ContentNegotiationResult Negotiate(Type type, HttpRequestMessage request,IEnumerable<MediaTypeFormatter> formatters)
         {
             if (request.Headers.UserAgent.ToString().ToLower().Contains("android"))
