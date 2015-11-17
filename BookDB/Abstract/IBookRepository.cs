@@ -11,7 +11,6 @@ namespace BookDB.Abstract
     {
         IEnumerable<Book> GetAll();
         void Create(Book book);
-        Book Read(int id);
         void Update(Book book);
         void Delete(int id);
         Book GetBook(int id);

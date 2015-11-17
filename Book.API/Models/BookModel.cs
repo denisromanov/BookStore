@@ -29,5 +29,8 @@ namespace Book.API.Models
 
         [JsonIgnore]
         public int GenreID { get; set; }
+
+        [JsonProperty("GenreName")]
+        public string GenreName { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -41,16 +42,21 @@ namespace Book.API.Controllers
         // GET api/<controller>/5
         public BookModel Get(int id)
         {
-            BookModel models = dbRepository.GetAll().Select(b => new BookModel
+            BookDB.Entities.Book books = dbRepository.GetBook(id);
+            if (books != null)
             {
-                Id = b.ID,
-                Title = b.Title,
-                Price = b.Price,
-                PublishYear = b.PublishYear,
-                GenreID = b.GenreID,
-            }).FirstOrDefault(b => b.Id == id);
+                return new BookModel
+                {
+                    Id = books.ID,
+                    Title = books.Title,
+                    Price = books.Price,
+                    PublishYear = books.PublishYear,
+                    GenreID = books.GenreID,
+                    GenreName = books.Genre.NameGenre
+                };
+            }
             
-            return models;
+            return null;
         }
 
         // POST api/<controller>
@@ -67,6 +73,16 @@ namespace Book.API.Controllers
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+        }
+
+        [HttpPost]
+        //[]
+        public BookModel OutDataBook([FromBody]string nameStyle)
+        {
+            BookModel book = new BookModel();
+
+
+            return book;
         }
     }
 }

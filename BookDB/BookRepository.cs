@@ -33,12 +33,6 @@ namespace BookDB
             }
         }
 
-        //Read Book from db
-        public Book Read(int id)
-        {
-            return db.Books.Find(id);
-        }
-
         //Update
         public void Update(Book book)
         {
@@ -64,7 +58,11 @@ namespace BookDB
 
         public Book GetBook(int id)
         {
-            return db.Books.FirstOrDefault(b => b.ID == id);
+            Book book = db.Books.Find(id);
+            db.Entry(book).Reference(b => b.Genre).Load();
+            return book;
+
+            //return db.Books.FirstOrDefault(b => b.ID == id);
         }
 
         //Save changes db
@@ -72,5 +70,10 @@ namespace BookDB
         {
             db.SaveChanges();
         }
+
+        //public void GetGenre(int id)
+        //{
+            
+        //}
     }
 }
