@@ -83,6 +83,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Help\Attribute\NoAction.txt" />
+    <Content Include="Help\Attribute\Restrictions routes.txt" />
     <Content Include="Help\HttpRoute.txt" />
     <Content Include="Help\HttpRouteCollection.txt" />
     <Content Include="Help\RouteData.txt" />

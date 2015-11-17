@@ -1,0 +1,9 @@
+﻿Атрибут NoAction
+
+Если мы не хотим, чтобы метод сопоставлялся с определенным маршрутом, то мы можем пометить его атрибутом NoAction:
+
+[NonAction]
+public string GetValue()
+{
+    return "getvalue";
+}

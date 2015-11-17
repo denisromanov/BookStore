@@ -17,7 +17,7 @@ namespace Book.API
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
+          config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "store/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
