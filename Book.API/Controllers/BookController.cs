@@ -14,6 +14,8 @@ using AutoMapper;
 
 namespace Book.API.Controllers
 {
+    // 
+    [RoutePrefix("store/book")]
     public class BookController : ApiController
     {
         private IBookRepository<BookDB.Entities.Book> dbRepository;
@@ -76,8 +78,8 @@ namespace Book.API.Controllers
         }
 
         [HttpPost]
-        //[]
-        public BookModel OutDataBook([FromBody]string nameStyle)
+        [Route("{id}/{nameStyle}")]
+        public BookModel GetBookModel([FromUri]string nameStyle)
         {
             BookModel book = new BookModel();
 
