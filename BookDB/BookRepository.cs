@@ -49,20 +49,34 @@ namespace BookDB
             }
         }
 
-        //Get Id a Book
+        public IEnumerable<Book> GetBookByStyleName(string nameStyle)
+        {
+            Style style = db.Styles.FirstOrDefault(s => s.NameStyle == nameStyle);
+            
+            //IEnumerable<Book> books = db.Books.Where(b=> b.Genre)
+            return null;
+        }
+
+        public IEnumerable<Book> GetBookByGenreName(string nameGenre)
+        {
+            Genre genre = db.Genres.FirstOrDefault(g => g.NameGenre == nameGenre);
+            
+            IEnumerable<Book> books = db.Books.Where(b => b.GenreID == genre.ID);
+            
+            return books;
+        }
+
         public int GetId(string title)
         {
             var BookId = db.Books.FirstOrDefault(b => b.Title == title);
             return BookId != null ? BookId.ID : 0;
         }
 
-        public Book GetBook(int id)
+        public Book GetBookById(int id)
         {
             Book book = db.Books.Find(id);
             db.Entry(book).Reference(b => b.Genre).Load();
             return book;
-
-            //return db.Books.FirstOrDefault(b => b.ID == id);
         }
 
         //Save changes db
@@ -70,10 +84,5 @@ namespace BookDB
         {
             db.SaveChanges();
         }
-
-        //public void GetGenre(int id)
-        //{
-            
-        //}
     }
 }

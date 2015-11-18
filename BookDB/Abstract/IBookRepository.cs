@@ -13,7 +13,9 @@ namespace BookDB.Abstract
         void Create(Book book);
         void Update(Book book);
         void Delete(int id);
-        Book GetBook(int id);
+        Book GetBookById(int id);
+        IEnumerable<Book> GetBookByStyleName(string nameStyle);
+        IEnumerable<Book> GetBookByGenreName(string nameGenre);
         int GetId(string name);
         void Save();
     }

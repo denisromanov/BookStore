@@ -44,7 +44,7 @@ namespace Book.API.Controllers
         // GET api/<controller>/5
         public BookModel Get(int id)
         {
-            BookDB.Entities.Book books = dbRepository.GetBook(id);
+            BookDB.Entities.Book books = dbRepository.GetBookById(id);
             if (books != null)
             {
                 return new BookModel
@@ -79,12 +79,41 @@ namespace Book.API.Controllers
 
         [HttpPost]
         [Route("{id}/{nameStyle}")]
-        public BookModel GetBookModel([FromUri]string nameStyle)
+        public BookModel GetBookModel_Style([FromUri]string nameStyle)
         {
-            BookModel book = new BookModel();
+            //var books = dbRepository.GetBookByStyleName(nameStyle);
+            //if (books != null)
+            //{
+            //    var bookModel = books.Select(b => new BookModel{ Id = b.ID,
+            //                                                     Title = b.Title,
+            //                                                     Price = b.Price,
+            //                                                     PublishYear = b.PublishYear,
+            //                                                     GenreID = b.GenreID,
+            //                                                     GenreName = b.Genre.NameGenre});
+            //    return bookModel;
+            //}
+            return null;
+        }
 
+        [HttpPost]
+        [Route("{nameGenre}")]
+        public IEnumerable<BookModel> GetBookModel_Genre([FromUri] string nameGenre)
+        {
+            var books = dbRepository.GetBookByGenreName(nameGenre);
+            if (books != null)
+            {
+                var bookModel = books.Select(b => new BookModel{
+                                                                    Id = b.ID,
+                                                                    Title = b.Title,
+                                                                    Price = b.Price,
+                                                                    PublishYear = b.PublishYear,
+                                                                    GenreID = b.GenreID,
+                                                                    GenreName = b.Genre.NameGenre
+                                                                });
+                return bookModel;
+            }
 
-            return book;
+            return null;
         }
     }
 }
