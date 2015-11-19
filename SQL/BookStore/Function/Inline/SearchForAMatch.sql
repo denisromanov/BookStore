@@ -1,13 +1,13 @@
 -- ================================================
 -- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
+-- Create Inline Function (New Menu).SQL
 --
 -- Use the Specify Values for Template Parameters 
 -- command (Ctrl-Shift-M) to fill in the parameter 
 -- values below.
 --
 -- This block of comments will not be included in
--- the definition of the procedure.
+-- the definition of the function.
 -- ================================================
 SET ANSI_NULLS ON
 GO
@@ -16,18 +16,19 @@ GO
 -- =============================================
 -- Author:		Denis
 -- Create date: 19.11.2015
--- Description:	Добавляет в таблицу Book столбцы AuthorID and PublishingID
+-- Description:	Функция принимает поисковую строку (что то вроде поиска гугла, вводим пару букв и на вывод будет идти таблица в которой буду совпадения)
 -- =============================================
-ALTER PROCEDURE AddColumnsForTableTheBook
-	
+ALTER FUNCTION SearchForAMatch 
+(	
+	-- Add the parameters for the function here
+	@Value nvarchar(50) 
+	 
+)
+RETURNS TABLE
 AS
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-
-    alter table Book add AuthorID int NULL, PublishingID int NULL;
-		
-	SET NOCOUNT OFF;
-END
+RETURN 
+(
+	SELECT * from Book
+	where Book.Title LIKE '%' + @Value + '%'
+)
 GO
