@@ -16,26 +16,32 @@ GO
 -- =============================================
 -- Author:		Denis
 -- Create date: 18.11.2015
--- Description:	Adds style into table Styles
+-- Description:	gets counts books for each style and sorted descending
 -- =============================================
-ALTER PROCEDURE AddStyle 
+ALTER PROCEDURE GetCountBook 
 	-- Add the parameters for the stored procedure here
-	@StyleName nvarchar(50)
+	   
 AS
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
+	
 	SET NOCOUNT ON;
+    
+	SELECT Style.NameStyle, count(case when Book.ID is not null then 1 else null end) as CountBook from Book
+	left join Genre
+	on Book.GenreID = Genre.ID
+	right join Style
+	on Genre.StyleID = Style.ID
+	group by NameStyle
+	order by CountBook DESC
+	
+	select Style.NameStyle, sum(case when Book.ID is not null then 1 else 0 end) as CountBook from Style
+	left join Genre
+	on Style.ID = Genre.StyleID
+	left join Book
+	on Book.GenreID = Genre.ID
+	group by NameStyle
+	order by CountBook DESC;
 
-    -- Insert statements for procedure here
-	
-	
-	-- My stored procedure, adds style into table
-	if(@StyleName <> '')
-	begin
-		insert into dbo.Style (dbo.Style.NameStyle) values (@StyleName)
-	end
-	select * from dbo.Style
 	SET NOCOUNT OFF;
 END
 GO

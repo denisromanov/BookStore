@@ -18,7 +18,7 @@ GO
 -- Create date: 18.11.2015
 -- Description:	Adds genre into table Genres
 -- =============================================
-CREATE PROCEDURE AddGenre 
+ALTER PROCEDURE AddGenre 
 	-- Add the parameters for the stored procedure here
 	@GenreName nvarchar(50) = NULL, 
 	@StyleID int
@@ -33,5 +33,6 @@ BEGIN
 		insert into dbo.Genre (dbo.Genre.NameGenre, dbo.Genre.StyleID) values (@GenreName, @StyleID)
 	END
 	select * from dbo.Genre
+	SET NOCOUNT OFF;
 END
 GO

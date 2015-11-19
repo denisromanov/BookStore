@@ -14,13 +14,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:		Denis
--- Create date: 18.11.2015
--- Description:	Adds style into table Styles
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE AddStyle 
-	-- Add the parameters for the stored procedure here
-	@StyleName nvarchar(50)
+CREATE PROCEDURE AddTablePublishings
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -28,14 +27,11 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	
-	
-	-- My stored procedure, adds style into table
-	if(@StyleName <> '')
-	begin
-		insert into dbo.Style (dbo.Style.NameStyle) values (@StyleName)
-	end
-	select * from dbo.Style
-	SET NOCOUNT OFF;
+	create table Publishings
+	(
+		ID int PRIMARY KEY identity,
+		PublishingHouse varchar(255),
+		AuthorID int
+	);
 END
 GO

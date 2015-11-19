@@ -18,7 +18,7 @@ GO
 -- Create date: 18.11.2015
 -- Description:	Adds book into table Books
 -- =============================================
-CREATE PROCEDURE AddBook 
+ALTER PROCEDURE AddBook 
 	-- Add the parameters for the stored procedure here
 	@Title nvarchar(50), 
 	@Price decimal,
@@ -36,5 +36,6 @@ BEGIN
 	end
     
 	SELECT * from dbo.Book
+	SET NOCOUNT OFF;
 END
 GO

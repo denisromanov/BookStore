@@ -16,26 +16,23 @@ GO
 -- =============================================
 -- Author:		Denis
 -- Create date: 18.11.2015
--- Description:	Adds style into table Styles
+-- Description:	Get styles, book > 1
 -- =============================================
-ALTER PROCEDURE AddStyle 
-	-- Add the parameters for the stored procedure here
-	@StyleName nvarchar(50)
+
+-- ѕолучает те книги количество которых больше 1
+ALTER PROCEDURE GetStyles 
+	
 AS
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-
-    -- Insert statements for procedure here
-	
-	
-	-- My stored procedure, adds style into table
-	if(@StyleName <> '')
-	begin
-		insert into dbo.Style (dbo.Style.NameStyle) values (@StyleName)
-	end
-	select * from dbo.Style
+	select Style.NameStyle, Count(case when Book.ID is not null then 1 else null end) as CountBook from Style
+	left join Genre
+	on Style.ID = Genre.StyleID
+	left join Book
+	on Book.GenreID = Genre.ID
+	group by NameStyle
+	having Count(case when Book.ID is not null then 1 else null end) > 1
+	order by CountBook DESC;
 	SET NOCOUNT OFF;
 END
 GO

@@ -15,27 +15,19 @@ SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		Denis
--- Create date: 18.11.2015
--- Description:	Adds style into table Styles
+-- Create date: 19.11.2015
+-- Description:	Добавляет в таблицу Book столбцы AuthorID and PublishingID
 -- =============================================
-ALTER PROCEDURE AddStyle 
-	-- Add the parameters for the stored procedure here
-	@StyleName nvarchar(50)
+CREATE PROCEDURE AddColumnsForTableTheBook
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here
+    
 	
-	
-	-- My stored procedure, adds style into table
-	if(@StyleName <> '')
-	begin
-		insert into dbo.Style (dbo.Style.NameStyle) values (@StyleName)
-	end
-	select * from dbo.Style
 	SET NOCOUNT OFF;
 END
 GO
