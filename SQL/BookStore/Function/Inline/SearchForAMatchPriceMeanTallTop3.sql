@@ -23,24 +23,19 @@ RETURNS @TAB TABLE
 (
 	ID int primary key NOT NULL,
     Title nvarchar(255) NOT NULL,
-	Price decimal NOT NULL,
-    PublishYear datetime NOT NULL,
-    GenreID int NOT NULL,
-    AuthorID int NOT NULL,
-	PublishingID int NOT NULL
+	Price decimal NOT NULL
 )
 as 
 begin
-with SearchFor (ID, Title, Price, PublishYear, GenreID, AuthorID, PublishingID)
+with SearchFor(ID, Title, Price)
 as
 (
 	
-	SELECT * from Book
+	SELECT id, Title, Price from Book
 	where Book.Title LIKE '%' + @Value + '%'
 )
  INSERT @TAB
- SELECT ID, Title, PublishYear, GenreID, AuthorID, PublishingID
-   FROM SearchFor 
+ SELECT ID, Title, Price FROM SearchFor 
    RETURN
 END;
 go

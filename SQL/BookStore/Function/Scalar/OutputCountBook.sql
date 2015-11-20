@@ -18,7 +18,7 @@ GO
 -- Create date: 19.11.2015
 -- Description:	Выводит количство книг, по введенному стилю
 -- =============================================
-ALTER FUNCTION OutputCountBook 
+Create FUNCTION OutputCountBook 
 (
 	-- Add the parameters for the function here
 	@StyleName nvarchar(50)
@@ -29,15 +29,17 @@ BEGIN
 	-- Declare the return variable here
 	DECLARE @Result int
 	
-	select @Result = sum(case when Book.ID is not null then 1 else 0 end) from Style
-	left join Genre
-	on Style.ID = Genre.StyleID AND Style.NameStyle = @StyleName
-	left join Book
+	select @Result = Count(*) from Style --case when Book.ID is not null then 1 else NULL end
+	inner join Genre
+	on Style.ID = Genre.StyleID
+	inner join Book
 	on Book.GenreID = Genre.ID
-
+	GROUP BY Style.NameStyle
+	HAVING Style.NameStyle = @StyleName
 	-- Return the result of the function
 	RETURN @Result
 
 END
 GO
+select dbo.OutputCountBook('art')
 
